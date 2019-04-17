@@ -7,16 +7,18 @@ app = Flask(__name__)
 @app.route('/api/pokemon/<id>')
 def poke(id):
     if int(id)<807 and int(id)>0:
-        r=requests.get("https://pokeapi.co/api/v2/pokemon/"+str(id))
-        data={}
-        a=r.json()
-        data['id']=a['id']
-        data['name']=a['name']
-        data['sprite']=a['sprites']['front_default']
-        foo={}
-        foo['pokemon']=data
-        bar=json.dumps(foo)
-        return bar
+        #r=requests.get("https://pokeapi.co/api/v2/pokemon/"+str(id))
+        with open ('pokedata.json') as r:
+            data=json.load(r)
+            #a=r.json()
+            #data['id']=a['id']['id']
+            #data['name']=a['id']['name']
+            #data['sprite']=a['id']['sprite']
+            d=data[str(id)]
+            foo={}
+            foo['pokemon']=d
+            bar=json.dumps(foo)
+            return bar
     else:
         return ("Error, invalid ID")
 
