@@ -20,3 +20,4 @@ for i in range(1,807,1):
     writeToJSONFile('./','pokedata',bar)
     print(bar)
 
+#https://gist.github.com/keithweaver/ae3c96086d1c439a49896094b5a59ed0 I reffered this link to do this program.

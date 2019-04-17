@@ -1,0 +1,5 @@
+Requirments to run the program are
+->Python should be installed in your computer
+->Flask framwork should be installed(it can be installed using 'pip install flask'
+->Open the working directory and run the program 'python app.py'
+->You will be provided with a link at port 8006, and you can use the program there
