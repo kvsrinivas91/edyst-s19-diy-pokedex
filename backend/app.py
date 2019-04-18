@@ -21,6 +21,10 @@ def poke(id):
             return bar
     else:
         return ("Error, invalid ID")
+        
+@app.errorhandler(404)  
+def page_not_found(error=None):
+  return ('Error 404`'), 404
 
 if __name__ == '__main__':
     app.run(host='localhost' ,port=8006)
