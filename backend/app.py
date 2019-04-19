@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 import requests
 import json
 
@@ -20,11 +20,16 @@ def poke(id):
             bar=json.dumps(foo)
             return bar
     else:
-        return ("Error, invalid ID"), 404
+        return ("Error, invalid "), 404
         
 @app.errorhandler(404)  
 def page_not_found(error=None):
   return ('Error 404'), 404
+
+@app.errorhandler(500)
+def page_not_found_500(e):
+    return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     app.run(host='localhost' ,port=8006)
