@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/api/pokemon/<id>')
 def poke(id):
-    if int(id)<808 and int(id)>0:
+    if int(id)<152 and int(id)>0:
         #r=requests.get("https://pokeapi.co/api/v2/pokemon/"+str(id))
         with open ('pokedata.json') as r:
             data=json.load(r)
@@ -20,11 +20,11 @@ def poke(id):
             bar=json.dumps(foo)
             return bar
     else:
-        return ("Error, invalid ID")
+        return ("Error, invalid ID"), 404
         
 @app.errorhandler(404)  
 def page_not_found(error=None):
-  return ('Error 404`'), 404
+  return ('Error 404'), 404
 
 if __name__ == '__main__':
     app.run(host='localhost' ,port=8006)
