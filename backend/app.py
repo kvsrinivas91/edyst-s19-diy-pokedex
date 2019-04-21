@@ -4,7 +4,15 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/api/pokemon/<id>')
+@app.errorhandler(404)  
+def page_not_found(error=None):
+  return ('Error 404'), 404
+
+@app.errorhandler(500)
+def page_not_found_500(e):
+    return render_template('404.html'), 404
+
+@app.route('/api/pokemon/<int:id>')
 def poke(id):
     if int(id)<152 and int(id)>0:
         #r=requests.get("https://pokeapi.co/api/v2/pokemon/"+str(id))
@@ -22,13 +30,6 @@ def poke(id):
     else:
         return ("Error, invalid "), 404
         
-@app.errorhandler(404)  
-def page_not_found(error=None):
-  return ('Error 404'), 404
-
-@app.errorhandler(500)
-def page_not_found_500(e):
-    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
