@@ -15,13 +15,8 @@ def page_not_found_500(e):
 @app.route('/api/pokemon/<int:id>')
 def poke(id):
     if int(id)<152 and int(id)>0:
-        #r=requests.get("https://pokeapi.co/api/v2/pokemon/"+str(id))
         with open ('pokedata.json') as r:
             data=json.load(r)
-            #a=r.json()
-            #data['id']=a['id']['id']
-            #data['name']=a['id']['name']
-            #data['sprite']=a['id']['sprite']
             d=data[str(id)]
             foo={}
             foo['pokemon']=d

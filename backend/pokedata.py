@@ -16,7 +16,6 @@ for i in range(1,808,1):
     data['name']=a['name']
     data['sprite']=a['sprites']['front_default']
     foo[i]=data
-    #print(foo)
 
 writeToJSONFile('./','pokedata',foo)
 
