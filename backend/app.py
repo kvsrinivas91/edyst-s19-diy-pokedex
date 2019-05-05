@@ -1,12 +1,11 @@
 from flask import Flask,render_template
-import requests
 import json
 
 app = Flask(__name__)
 
 @app.errorhandler(404)  
 def page_not_found(error=None):
-  return ('Error 404'), 404
+  return render_template('Error 404'), 404
 
 @app.errorhandler(500)
 def page_not_found_500(e):
@@ -23,7 +22,7 @@ def poke(id):
             bar=json.dumps(foo)
             return bar
     else:
-        return ("Error, invalid "), 404
+        return render_template('404.html'),404
         
 
 
